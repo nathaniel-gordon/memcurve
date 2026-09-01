@@ -1,0 +1,15 @@
+{
+  "name": "memcurve",
+  "category": "Agentic AI & Memory Systems",
+  "architecture": "Temporal memory management system with human-like Ebbinghaus forgetting curves, semantic consolidation, and MCP server interface",
+  "interface": "MCP server + Python library (cortexgraph)",
+  "testing": "1,370-test pytest suite covering decay dynamics, graph relations, consolidation, and security (pytest tests -q)",
+  "demo_cmd": "python -c \"import cortexgraph; print('CortexGraph version:', cortexgraph.__version__)\"",
+  "test_cmd": "pytest tests -q",
+  "entry_points": [
+    "src/cortexgraph/server.py",
+    "src/cortexgraph/context.py",
+    "src/cortexgraph/tools/save.py",
+    "src/cortexgraph/tools/search.py"
+  ]
+}

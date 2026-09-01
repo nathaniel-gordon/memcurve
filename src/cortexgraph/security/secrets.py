@@ -39,7 +39,7 @@ PATTERNS = {
     # OpenAI API keys
     "openai_key": re.compile(r"sk-[a-zA-Z0-9]{48,}"),
     # Anthropic API keys
-    "anthropic_key": re.compile(r"sk-ant-[a-zA-Z0-9\-]{95,}"),
+    "anthropic_key": re.compile(r"sk-ant-[a-zA-Z0-9\-]{80,}"),
     # Google API keys
     "google_api_key": re.compile(r"AIza[0-9A-Za-z_\-]{35}"),
     # Slack tokens

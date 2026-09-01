@@ -400,7 +400,10 @@ class TestEnsureWithinDirectory:
             real_file.write_text("test content")
 
             symlink_file = base_dir / "symlink.txt"
-            symlink_file.symlink_to(real_file)
+            try:
+                symlink_file.symlink_to(real_file)
+            except OSError:
+                pytest.skip("Symlink creation not permitted on Windows without privilege")
 
             result = ensure_within_directory(symlink_file, base_dir, resolve_symlinks=True)
             assert result.is_absolute()
@@ -415,7 +418,10 @@ class TestEnsureWithinDirectory:
             real_file.write_text("test content")
 
             symlink_file = base_dir / "symlink.txt"
-            symlink_file.symlink_to(real_file)
+            try:
+                symlink_file.symlink_to(real_file)
+            except OSError:
+                pytest.skip("Symlink creation not permitted on Windows without privilege")
 
             result = ensure_within_directory(symlink_file, base_dir, resolve_symlinks=False)
             assert result.is_absolute()
@@ -433,7 +439,10 @@ class TestEnsureWithinDirectory:
             outside_file.write_text("secret")
 
             symlink = base_dir / "link_to_secret.txt"
-            symlink.symlink_to(outside_file)
+            try:
+                symlink.symlink_to(outside_file)
+            except OSError:
+                pytest.skip("Symlink creation not permitted on Windows without privilege")
 
             with pytest.raises(ValueError, match="escapes base directory"):
                 ensure_within_directory(symlink, base_dir, resolve_symlinks=True)

@@ -16,7 +16,7 @@ try:
     from sentence_transformers import SentenceTransformer
 
     SENTENCE_TRANSFORMERS_AVAILABLE = True
-except ImportError:
+except (ImportError, OSError):
     SentenceTransformer = None  # type: ignore[assignment,misc]
     SENTENCE_TRANSFORMERS_AVAILABLE = False
 
